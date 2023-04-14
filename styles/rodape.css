@@ -1,0 +1,60 @@
+hr {
+    margin: 0;
+
+}
+
+.rodape {
+    background-color: var(--branco);
+    padding: 1em;
+
+}
+
+.lista-rodape {
+    display: none; /*Aqui eu coloquei para esconder a lista do rodape pois ele só deve aparecer na versao tablet e desktop*/
+}
+
+@media screen and (min-width: 1024px) {
+    .rodape {
+        display: flex; /*Aqui eu coloquei a lista em flex box para dividir direitinho cada elemento*/
+        justify-content: space-around; /*Space-around faz um espcamento igual entre todos os elementos e a borda */
+    }
+
+    .lista-rodape__item {
+        display: flex;
+        align-items: center;
+        margin: 0.6em 0;
+        
+    }
+
+    .lista-rodape {
+        display: block; /*Aqui eu coloquei para esconder a lista do rodape pois ele só deve aparecer na versao tablet e desktop*/
+    }
+
+
+
+    .lista-rodape__link {
+        text-decoration: none;
+        color: var(--cinza);
+        margin-left: 0.6em;
+    }
+
+    .lista-rodape__titulo {
+        font-size: 14px;
+        color: var(--cinza-claro);
+    }
+
+    .rodape__titulo {
+        font-size: 24px;
+    }
+}
+
+@media screen and (min-width: 1728px) {
+    .lista-rodape {
+        border-left: 1px solid var(--cinza-claro); /*Aqui eu coloquei uma bordinha na esquerda que funcionou como a linha de separacao*/
+        padding-left: 1em;
+    }
+
+    .rodape {
+        padding: 3em 0;
+    }
+}

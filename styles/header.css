@@ -1,0 +1,186 @@
+
+.cabecalho__menu-hamburger {
+    width: 40px;
+    height: 40px;
+    background-image: url("../assets/__Menu.svg"); /*usar os dois pontos para pder achar a imagem*/
+    display: inline-block; /* permite os ajustes de altura e largura se fosse só inline nao poderia fazer os ajustes*/
+    background-repeat: no-repeat; /*coloquei isso aqui para a imagem nao ficar 'infinita'*/
+    background-position: center;
+}
+
+.cabecalho {
+    background-color: var(--branco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /*libera a possibilidade de colocar outros atributos de posicao*/
+
+}
+
+.container {
+    display: flex;
+    align-items: center;
+
+}
+
+.container__imagem {
+    padding: 1em; /*Aqui eu coloquei um espacamento entre os ícones*/
+}
+
+.lista-menu {
+    display: none; /*Deixa um elemento 'invisível' */
+    position: absolute;/*Permite que vc movimente o elemento de acordo com o elemento pai com postion diferente de static. Pdemos nos movimentar de acordo com o cabecalho */
+    top: 100%; /*Tirou 100% do cabecalho e ficou para baixo só botamos relative no cabecalho para liberar o absolute e conseguir movimentar 100 para baixo de cabecalho a lista do menu*/
+    width: 60vw; /*Aumentei a largura de acordo  com a minha tela, como usei 60 foi um pouco da metade da tela*/
+}
+
+.container__botao:checked ~ .lista-menu { /* o acento til é o combinador em css funciona como uma condicional*/
+    display: block;
+}
+
+.lista-menu__titulo, .lista-menu__item  { /*Da para modificar varios elementos separando por virgula*/
+    padding: 1em;
+    background-color: var(--branco);
+}
+
+.lista-menu__titulo{
+    color: var(--laranja); /*Para mudar a cor de fonte usamos o atributo color*/
+    font-weight: 700;
+}
+
+.lista-menu__link {
+    background: var(--azul-degrade);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase; /*Colocar a texto em letra maiúscula*/
+    
+}
+
+.container__botao {
+    display: none;
+
+}
+
+.container__titulo {
+    display: none; /*Aqui eu to escondendo o S*/
+}
+
+.opcoes {
+    display: none;
+}
+
+.container__texto { /*Aqui eu tirei o texto que aparece somente na resolucao de desktop*/
+    display: none;
+}
+
+.container__botao:checked ~ .container__rotulo > .cabecalho__menu-hamburger { /*Aqui eu coloquei a imagem do menu, os três riscos brancos, para ser acessado assim que clicado*/
+    background-image: url("../assets/__menu_black_24dp\ 1.svg"); /*Usei vários combinadores css. O ~ procura um outro elemento que esteja em seguida dele que tenha aquela classe. O sinal de > procura algo que está dentro dele no caso .cabecalho.... estava dentro do .container__rotulo */
+    /*A pseudo classe checked verifica se o input foi clicado*/
+
+}
+
+.container__botao:checked ~ .container__rotulo { /*Como a imagem é branca eu coloquei o fundo azul para poder aparecer os riscos do menu*/
+    background: var(--azul-degrade);
+}
+
+/*Media Query usamos para aplicar estilos quando em determinado tamanho de tela. Muito usado para fazer design responsivo  */
+@media screen and (min-width: 1024px){
+    .container__titulo, 
+    .container__titulo--negrito {
+        font-family: var(--fonte-secundaria);
+        font-size: 30px;
+    }
+
+    .container__titulo {
+        font-weight: 400;
+        padding: 0 1em;
+        display: block; /*Aqui para aquele titulo do lado do logo aparecer*/
+    }
+
+    .container__titulo--negrito {
+        font-weight: 700;
+    }
+
+    .opcoes {
+        display: flex;
+    }
+
+    .opcoes__item { /*Aqui eu estou espacando os intens na parte de cima do cabecalho*/
+        padding: 0 1em;
+        text-transform: uppercase;
+
+    }
+
+    .opcoes__link {
+        text-decoration: none;
+        color: var(--preto);
+    }
+    .container__imagem-transparente { /*Aqui to desaparecendo com o icone do coracaozinho na tela grande*/
+        display: none;
+    }
+
+    .cabecalho__menu-hamburger {
+        display: none;
+    }
+
+    .cabecalho {
+        padding: 0 1em;
+    }
+
+    .opcoes__botao:checked ~.lista-menu {
+        display: block;
+        width: auto;
+    }
+
+    .opcoes__botao {
+        display: none;
+    }
+
+    .opcoes__botao:checked ~ .opcoes__rotulo > .opcoes__item {
+        background: var(--azul-degrade);
+        color: var(--branco);
+    }
+
+    .opcoes__item:hover ~ .opcoes__link {
+        background: var(--preto);
+    }
+
+    .opcoes__item, .opcoes__link {
+        padding: 2em 1em; /*O azul do background nao estava ocupando todo o botao entao usei o padding para arrumar isso*/
+    }
+
+    .lista-menu__item:hover {
+        background: var(--azul-degrade);
+        
+    }
+
+    .lista-menu__item:hover > .lista-menu__link {
+        -webkit-text-fill-color: var(--branco); /*Botei esse webkit pq no inicio do projeto para botar essa cor azul degrade na fonte tive que colocar um background e associar ele a fonte. E quando agnt colocou o webkit-text-fill-color tinhamos definido ele como transparante entao ele nao aplicava cor nehuma além do background aplicado. Como AGORA apliquei uma cor de preenchimento para ele ele ta funcionando direitinho  */
+        text-decoration: none;
+    }
+
+}
+
+@media screen and (min-width: 1728px) {
+    
+    .container__link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: var(--preto);
+
+    }
+
+    .cabecalho {
+        padding: 0 2em;
+    }
+
+    .opcoes {
+        margin-right: auto; /*Aqui eu preenchi todo espaco da direita com os intens.*/
+    }
+
+    .container__texto { /*Aqui eu liberei o texto que aparece somente na resolucao de desktop*/
+        display: block;
+    }
+}

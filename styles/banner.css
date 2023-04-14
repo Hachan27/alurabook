@@ -1,0 +1,68 @@
+.banner {
+    background: var(--azul-degrade);
+    color: var(--branco);
+    text-align: center;
+    padding: 2.5em 2em; /*A relacao é entre o número e fonte, que no caso é 16, 2.5 x 16 e 2 x 16*/
+}
+
+.banner__titulo {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.banner__texto {
+    font-weight: 500;
+    margin: 1em 0;
+}
+
+.banner__pesquisa {
+    background-color: transparent;
+    border: 1px solid var(--branco); /* tres inf tamanho, tipo e cor*/
+    color: var(--branco);
+    border-radius: 24px;
+    padding: 1em; /*colocar um espacamento*/
+    width: 100%; /*Com isso eu tenho 100 da largura que posso ocupar dentro do banner*/
+
+}
+
+.banner__pesquisa::placeholder { /*aqui eu fiz mudanças no placeholder*/
+    font-family: var(--fonte-principal);
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    color: var(--branco);
+    background: url("../assets/__Pesquisa.svg") no-repeat; /*Coloquei a lupinha no buscador e usei o no-repeat para que a imagem não fiquei se replicando*/
+    background-position: 0.5em;
+    
+}
+
+@media screen and (min-width: 1024px) {
+    .banner__titulo {
+        font-size: 36px;
+        font-weight: 700;
+        
+
+    }
+
+    .banner__pesquisa {
+        width: 50%;
+    }
+
+    .banner__pesquisa::placeholder {
+        background-position: 6em;
+    }
+}
+
+@media screen and (min-width: 1728px) {
+    .banner__pesquisa {
+        width: 35%;
+    }
+
+    .banner__pesquisa::placeholder {
+        background-position: 12em;
+    }
+
+    .banner {
+        padding: 6em 0;
+    }
+}
